@@ -1,0 +1,33 @@
+# Secrets / local config
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# Test output that should NOT be committed
+reports/screenshots/*
+!reports/screenshots/.gitkeep
+reports/*.log
+reports/assets/
+videos/*
+!videos/README.md
+!videos/.gitkeep
+# Recording of an actual test run, committed as a deliverable
+!videos/test_run_employee_lifecycle.mp4
+
+# The generated HTML report IS committed as evidence of a real run:
+!reports/report.html
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+!videos/test_run_employee_lifecycle.mp4

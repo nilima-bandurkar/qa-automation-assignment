@@ -1,0 +1,10 @@
+{
+  "first_name": "Test",
+  "last_name": "Employee",
+  "employee_id_prefix": "123",
+  "job_title": "QA Engineer",
+  "employment_status": "Full-Time Permanent",
+  "profile_picture": "test_data/profile.png",
+  "note_job_title": "The demo app's Job Title list is fixed by the admin and has no 'QA Automation Engineer' option, so 'QA Engineer' is used.",
+  "note_employee_id": "first_name, last_name and Employee Id are made unique at runtime by utils/data_loader.py"
+}

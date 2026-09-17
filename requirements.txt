@@ -1,0 +1,17 @@
+# Core UI automation
+selenium==4.25.0
+# Test runner
+pytest==8.3.3
+# HTML reporting (pulls in pytest-metadata)
+pytest-html==4.1.1
+# API validation layer
+requests==2.32.3
+# Environment configuration (.env)
+python-dotenv==1.0.1
+# Generates the small test profile.png if it is missing
+Pillow==10.4.0
+
+# ---------------------------------------------------------------------------
+# OPTIONAL: only needed when RECORD_VIDEO=true (see README > Video Recording).
+# Install with:  pip install -r requirements-video.txt
+# ---------------------------------------------------------------------------

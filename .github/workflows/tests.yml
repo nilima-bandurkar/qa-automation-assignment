@@ -1,0 +1,53 @@
+name: UI Automation Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  ui-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Set up Chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+
+      - name: Run tests
+        env:
+          ORANGEHRM_URL: https://opensource-demo.orangehrmlive.com/
+          # Public demo credentials. For a private instance, store these as
+          # repository secrets and reference them here instead.
+          ORANGEHRM_USERNAME: ${{ secrets.ORANGEHRM_USERNAME || 'Admin' }}
+          ORANGEHRM_PASSWORD: ${{ secrets.ORANGEHRM_PASSWORD || 'admin123' }}
+          HEADLESS: "true"
+          BROWSER: chrome
+        run: pytest --html=reports/report.html --self-contained-html
+
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-report
+          path: |
+            reports/report.html
+            reports/screenshots/
+            reports/test_execution.log
+          if-no-files-found: warn
